@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "taggit"
+version = "1.0.0"
+description = "Applies tagging to organize files."
+authors = ["Grant Savage"]
+license = "MIT"
+readme = 'README.md'
+repository = "https://github.com/savageGrant/taggit"
+
+keywords = ["tagging", "tags", "tag"]
+
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+xattr = "^0.9.9"
+biplist = "^1.0.0"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.12"
+pytest = "^6.0"
+pytest-cov = "^2.8"
+
+[build-system]
+requires = ["poetry>=1.1.0"]
+build-backend = "poetry.masonry.api"
