@@ -115,12 +115,6 @@ def _get_raw_tags(file: str):
     if _OPERATING_SYSTEM == 'Darwin':
         try:
             tag_list = xattr.getxattr(file, TAG_LOCATION)
-            # for location in TAG_LOCATIONS:
-            #     try:
-            #         tag_list.append(xattr.getxattr(file, location))
-            #     except OSError:
-            #         pass
-            # tag_list = list(set(x for x in tag_list))
         except OSError:
             return []
         return plistlib.loads(tag_list)
