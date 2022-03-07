@@ -41,6 +41,13 @@ class Tag:
     def __repr__(self):
         return f'Tag("{self.name}", "{self.color}")'
 
+    def __eq__(self, other):
+        if not isinstance(other, Tag):
+            # don't attempt to compare against unrelated types
+            return NotImplemented
+
+        return self.name == other.name and self.color == other.color and self.color_code == other.color_code
+
     @staticmethod
     def _map_color_to_string(color):
         if str(color).isnumeric():
@@ -67,7 +74,7 @@ class Tag:
                 return _COLOR_TO_CODE_MAPPING['NONE']
         else:
             if int(color) in _CODE_TO_COLOR_MAPPING:
-                return color
+                return int(color)
             else:
                 warnings.warn("""The color code {} is not available. Please select a 
                               valid code from {}""".format(color, _CODE_TO_COLOR_MAPPING))
@@ -83,7 +90,10 @@ class Tag:
 
     @classmethod
     def from_tuple(cls, tup):
-        return cls(tup[0], tup[1])
+        if len(tup) == 1:
+            return cls(tup[0], 0)
+        else:
+            return cls(tup[0], tup[1])
 
 
 def _generate_tag(tag) -> Tag:
