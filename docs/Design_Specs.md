@@ -27,7 +27,15 @@ taggit
 
 ## High level design decisions
 
+Focus on flexibility. Users should be able to create a tag successfully as long as they pass an interpretable value.
+I do not want to force a single acceptable way of creating.
 
+Tags should be able to be added without explicit creation of a tag object.
+
+The design should allow for future expansion to multiple OS environments. Nothing passed by the user should be OS specific.
+
+Cognative load should be reduced whenever possible. Each method and function should clearly state its functionality via
+the name. Docstrings are non-negotiable.
 
 ## Style and standards
 
