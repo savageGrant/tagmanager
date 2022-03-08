@@ -1,11 +1,35 @@
 # Taggit
-### A library for tagging files in Python.
+### A Python library for tagging files.
+#### Author: Grant Savage
 ## Installation
 
 ```zsh
 pip install taggit
 ```
 
+## Current Package Limitations
+This package currently works on Mac OS X 10.9 and newer. It was developed on Mac OS X 12.2
+There is currently no functionality for Linux or Windows.
+
+## Package Structure
+```
+taggit
+|   README.md
+|   LICENSE
+|   .gitignore
+|   poetry.lock
+|   pyproject.toml
+|───taggit
+|   |   __init__.py
+|   |   taggit.py
+|───tests
+|   |   test_taggit.py
+|───docs
+|   |   Functional_Specs.md
+|   |   Design_Specs.md
+|───sample_folder
+|   |   sample_file.txt
+```
 
 ## Tutorial
 

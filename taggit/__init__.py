@@ -1,5 +1,8 @@
 from platform import system
+
 from .taggit import *
+
+
 OPERATING_SYSTEM = system()
 
 

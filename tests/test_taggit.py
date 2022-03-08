@@ -1,8 +1,10 @@
-from unittest.mock import patch
-import pytest
-import taggit
 import difflib
 import unittest
+from unittest.mock import patch
+
+import pytest
+
+import taggit
 
 
 def test_raise_an_error_on_unsupported():

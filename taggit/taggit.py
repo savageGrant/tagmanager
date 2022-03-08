@@ -1,9 +1,9 @@
 import sys
-from enum import Enum
-import xattr
-import plistlib
 import warnings
+import plistlib
 from platform import system
+
+import xattr
 from biplist import writePlistToString, readPlistFromString
 
 _OPERATING_SYSTEM = system()
@@ -50,6 +50,17 @@ class Tag:
 
     @staticmethod
     def _map_color_to_string(color):
+        """Returns a color string representation given an input.
+
+        Parameters
+        ----------
+        color : Str or Int representation of color. Can be a "color code" or a "color".
+
+        Returns
+        -------
+            Str: Str representation of a color in English. Returns "NONE" if no valid color
+            is passed as input.
+        """
         if str(color).isnumeric():
             if int(color) in _CODE_TO_COLOR_MAPPING:
                 return _CODE_TO_COLOR_MAPPING[int(color)]
@@ -151,20 +162,21 @@ def add_tag(tag, file) -> None:
     _set_tags(tags, file)
 
 
-def remove_tag(tag, file, remove_all=False) -> None:
-        """Remove tag(s) from `file`."""
-        if remove_all:
-            _set_tags([], file)
-        else:
-            if isinstance(tag, list):
-                tag_list = [_generate_tag(t) for t in tag]
-            else:
-                try:
-                    tag_list = [_generate_tag(tag)]
-                except TypeError:
-                    sys.exit(1)
-            tags = _get_raw_tags(file)
-            for tag in tag_list:
-                if str(tag) in tags:
-                    tags.pop(tags.index(str(tag)))
-            _set_tags(tags, file)
+def remove_all_tags(file) -> None:
+    _set_tags([],file)
+
+
+def remove_tag(tag, file) -> None:
+    """Remove tag(s) from `file`."""
+    if isinstance(tag, list):
+        tag_list = [_generate_tag(t) for t in tag]
+    else:
+        try:
+            tag_list = [_generate_tag(tag)]
+        except TypeError:
+            sys.exit(1)
+    tags = _get_raw_tags(file)
+    for tag in tag_list:
+        if str(tag) in tags:
+            tags.pop(tags.index(str(tag)))
+    _set_tags(tags, file)
