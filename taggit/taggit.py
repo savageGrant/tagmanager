@@ -46,7 +46,8 @@ class Tag:
             # don't attempt to compare against unrelated types
             return NotImplemented
 
-        return self.name == other.name and self.color == other.color and self.color_code == other.color_code
+        return self.name == other.name and self.color == other.color \
+            and self.color_code == other.color_code
 
     @staticmethod
     def _map_color_to_string(color):
@@ -54,25 +55,29 @@ class Tag:
 
         Parameters
         ----------
-        color : Str or Int representation of color. Can be a "color code" or a "color".
+        color : Str or Int representation of color.
+                Can be a "color code" or a "color".
 
         Returns
         -------
-            Str: Str representation of a color in English. Returns "NONE" if no valid color
-            is passed as input.
+            Str: Str representation of a color in English.
+            Returns "NONE" if no valid color is passed as input.
         """
         if str(color).isnumeric():
             if int(color) in _CODE_TO_COLOR_MAPPING:
                 return _CODE_TO_COLOR_MAPPING[int(color)]
             else:
-                warnings.warn("""The number {} does not map to an available color not. Please select a 
-                          mapping from {}""".format(color, _CODE_TO_COLOR_MAPPING))
+                warnings.warn(f"The number {color} does not map "
+                              f"to an available color not."
+                              f"Please select a mapping "
+                              f"from {_CODE_TO_COLOR_MAPPING}")
                 return _CODE_TO_COLOR_MAPPING[0]
         else:
             if color.upper() in _COLOR_TO_CODE_MAPPING:
                 return color.upper()
             else:
-                warnings.warn(f"The color {color} is not available, NONE was used. Valid colors are: {_COLOR_STRING}")
+                warnings.warn(f"The color {color} is not available, NONE "
+                              f"was used. Valid colors are: {_COLOR_STRING}")
                 return 'NONE'
 
     @staticmethod
@@ -81,14 +86,15 @@ class Tag:
             if color.upper() in _COLOR_TO_CODE_MAPPING:
                 return _COLOR_TO_CODE_MAPPING[color.upper()]
             else:
-                warnings.warn(f"The color {color} is not available, NONE was used. Valid colors are: {_COLOR_STRING}")
+                warnings.warn(f"The color {color} is not available, NONE "
+                              f"was used. Valid colors are: {_COLOR_STRING}")
                 return _COLOR_TO_CODE_MAPPING['NONE']
         else:
             if int(color) in _CODE_TO_COLOR_MAPPING:
                 return int(color)
             else:
-                warnings.warn("""The color code {} is not available. Please select a 
-                              valid code from {}""".format(color, _CODE_TO_COLOR_MAPPING))
+                warnings.warn(f"Color code {color} is not available. Select "
+                              f"a valid code from {_CODE_TO_COLOR_MAPPING}")
                 return 0
 
     @classmethod
@@ -138,12 +144,13 @@ def get_tags(file):
 
 
 def _set_tags(tags, file):
-        """Add tags to a file"""
-        if _OPERATING_SYSTEM == 'Darwin':
-            _delete_existing_finder_info(file)
-            tags = [str(t) if isinstance(t, Tag) else str(Tag.from_string(t)) for t in tags]
-            plist = plistlib.dumps(tags)
-            xattr.setxattr(file, TAG_LOCATION, plist)
+    """Add tags to a file"""
+    if _OPERATING_SYSTEM == 'Darwin':
+        _delete_existing_finder_info(file)
+        tags = [str(t) if isinstance(t, Tag)
+                else str(Tag.from_string(t)) for t in tags]
+        plist = plistlib.dumps(tags)
+        xattr.setxattr(file, TAG_LOCATION, plist)
 
 
 def add_tag(tag, file) -> None:
@@ -163,7 +170,7 @@ def add_tag(tag, file) -> None:
 
 
 def remove_all_tags(file) -> None:
-    _set_tags([],file)
+    _set_tags([], file)
 
 
 def remove_tag(tag, file) -> None:

@@ -18,6 +18,7 @@ classifiers = [
 python = "^3.7"
 xattr = "^0.9.9"
 biplist = "^1.0.0"
+flake8 = "^4.0.1"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.12"
