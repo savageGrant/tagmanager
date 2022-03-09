@@ -26,11 +26,28 @@ if _OPERATING_SYSTEM == 'Darwin':
 
 
 class Tag:
-    """
-    accepts name and color of the tag
+    """Returns a Tag object.
+
+    Attributes
+    ----------
+    name : Str representation of the tag name
+    color : Str representation of color.
+    color_code: Int representation of the color_code mapping
+
+    Methods
+    --------
+    from_string(cls, string_tag: str)
+    from_tuple(cls, tup)
     """
 
     def __init__(self, name, color):
+        """Constructs a Tag object.
+
+        Parameters
+        ----------
+        name : str representation of the tag name
+        color : Str representation of color.
+        """
         self.name = name
         self.color = self._map_color_to_string(color)
         self.color_code = self._map_color_to_code(color)
@@ -82,6 +99,18 @@ class Tag:
 
     @staticmethod
     def _map_color_to_code(color):
+        """Returns a color_code int representation given an input.
+
+        Parameters
+        ----------
+        color : Str or Int representation of color.
+                Can be a "color code" or a "color".
+
+        Returns
+        -------
+            Int: integer representation of a color_code.
+            Returns 0 if no valid color is passed as input.
+        """
         if not str(color).isnumeric():
             if color.upper() in _COLOR_TO_CODE_MAPPING:
                 return _COLOR_TO_CODE_MAPPING[color.upper()]
@@ -99,6 +128,16 @@ class Tag:
 
     @classmethod
     def from_string(cls, string_tag: str):
+        """Parses string and calls the Tag constructor. Returns a Tag object.
+
+        Parameters
+        ----------
+        string_tag : str representation of the tag to be created.
+
+        Returns
+        -------
+        Tag object
+        """
         if '\n' in string_tag:
             name, color = string_tag.splitlines()
             return Tag(name, color)
@@ -106,14 +145,25 @@ class Tag:
             return Tag(string_tag, 'NONE')
 
     @classmethod
-    def from_tuple(cls, tup):
-        if len(tup) == 1:
-            return cls(tup[0], 0)
+    def from_tuple(cls, tag_tup):
+        """Parses tuple and calls the Tag constructor. Returns a Tag object.
+
+        Parameters
+        ----------
+        tag_tup : tuple representation of the tag to be created.
+
+        Returns
+        -------
+        Tag object
+        """
+        if len(tag_tup) == 1:
+            return cls(tag_tup[0], 0)
         else:
-            return cls(tup[0], tup[1])
+            return cls(tag_tup[0], tag_tup[1])
 
 
 def _generate_tag(tag) -> Tag:
+    """calls appropriate Tag constructor and returns Tag object."""
     if isinstance(tag, str):
         return Tag.from_string(tag)
     elif isinstance(tag, tuple):
@@ -123,12 +173,13 @@ def _generate_tag(tag) -> Tag:
 
 
 def _delete_existing_finder_info(file):
+    """removes existing finder info."""
     if FINDER_INFO in xattr.listxattr(file):
         xattr.removexattr(file, FINDER_INFO)
 
 
 def _get_raw_tags(file: str):
-    """List the tags on the `file`."""
+    """List the tags on the file."""
     if _OPERATING_SYSTEM == 'Darwin':
         try:
             tag_list = xattr.getxattr(file, TAG_LOCATION)
@@ -140,6 +191,7 @@ def _get_raw_tags(file: str):
 
 
 def get_tags(file):
+    """Gets tags to a file"""
     return [Tag.from_string(tag) for tag in _get_raw_tags(file)]
 
 
@@ -154,7 +206,7 @@ def _set_tags(tags, file):
 
 
 def add_tag(tag, file) -> None:
-    """Add tag(s) to `file`."""
+    """Add tag(s) to file."""
     if isinstance(tag, list):
         tag_list = [_generate_tag(t) for t in tag]
     else:
@@ -170,11 +222,12 @@ def add_tag(tag, file) -> None:
 
 
 def remove_all_tags(file) -> None:
+    """Remove all tags from file."""
     _set_tags([], file)
 
 
 def remove_tag(tag, file) -> None:
-    """Remove tag(s) from `file`."""
+    """Remove tag(s) from file."""
     if isinstance(tag, list):
         tag_list = [_generate_tag(t) for t in tag]
     else:

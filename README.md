@@ -35,7 +35,7 @@ taggit
 
 Add tag to file:
 ```python
->>> import taggit
+import taggit
 
 >>> file_location = "sample_folder/sample_file.txt"
 
