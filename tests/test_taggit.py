@@ -37,10 +37,16 @@ def test_create_tag_from_tuple():
 def test_remove_tag():
     # Tests for Mac OSx
     taggit._OPERATING_SYSTEM = 'Darwin'
-    taggit.remove_all_tags('test_file.txt')
-    taggit.add_tag(("tag", "red"), 'test_file.txt')
-    taggit.add_tag(("tag", "blue"), 'test_file.txt')
-    assert taggit.get_tags('test_file.txt') == \
+    test_file = 'tests/test_file.txt'
+    taggit.remove_all_tags(test_file)
+    taggit.add_tag(("tag", "red"), test_file)
+    taggit.add_tag(("tag", "blue"), test_file)
+    assert taggit.get_tags(test_file) == \
            [taggit.Tag("tag", "red"), taggit.Tag("tag", "blue")]
-    taggit.remove_tag(('tag', 'red'), 'test_file.txt')
-    assert taggit.get_tags('test_file.txt') == [taggit.Tag("tag", "blue")]
+    taggit.remove_tag(('tag', 'red'), test_file)
+    assert taggit.get_tags(test_file) == [taggit.Tag("tag", "blue")]
+
+def test_str_representation_tag_object():
+    # Tests for Mac OSx
+    taggit._OPERATING_SYSTEM = 'Darwin'
+    str(taggit.Tag('Red_tag', 'red')) == 'Red_tag\n6'
