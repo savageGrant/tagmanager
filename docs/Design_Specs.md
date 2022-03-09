@@ -42,12 +42,16 @@ Tags allow for directory-based search but also allow the user to cast a fast wid
 powerful when a developer or data scientist wants to quickly retrieve like-files from multiple projects.git
 
 #### Use-Case 1
-Return all feature engineering files that contain a key feature. If I tag each fe_helper.py file I have with string
-representations of a key features I can quickly find them and more easily reuse code from past projects.
+Tag each feature engineering helper file with string representations of the key features of the model.
+I can then quickly return all feature engineering files that contain a key feature allowing me to more 
+easily reuse code from past projects.
 
 #### Use-Case 2
 Another use case (how I use tags daily) is to tag class files by type and organize them by week. 
 This allows me to search by homework if I want to search for all homework from multiple weeks.
+
+#### Use-Case 3
+Remove tags for dated projects or invalidated assumptions.
 
 ## High level design decisions
 
