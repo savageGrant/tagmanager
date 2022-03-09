@@ -25,6 +25,30 @@ taggit
 |   |   sample_file.txt
 ```
 
+## Problem Addressed
+
+The current OS X tagging capability is not automated and not sustainable on a large scale. 
+A user has to manually adding tags one-by-one via OSx UI, a user can add a single tag to multiple files in the same 
+directory in one action, however the user still has to manually select the desired files and add tags one at a time.
+
+### Motivation for Data-Science
+Model development is often done locally.
+Small-to-medium problems can often be trained locally, and large problems can be built with sample 
+data before training on more expensive compute. There can be various data and data iterations that are used and created 
+during model building, training and evaluation. Currently, file management is done by directory or by appending prefix 
+or suffix keys to file names. Tags are often a better solution.
+
+Tags allow for directory-based search but also allow the user to cast a fast wide-net search. This capability can be 
+powerful when a developer or data scientist wants to quickly retrieve like-files from multiple projects.git
+
+#### Use-Case 1
+Return all feature engineering files that contain a key feature. If I tag each fe_helper.py file I have with string
+representations of a key features I can quickly find them and more easily reuse code from past projects.
+
+#### Use-Case 2
+Another use case (how I use tags daily) is to tag class files by type and organize them by week. 
+This allows me to search by homework if I want to search for all homework from multiple weeks.
+
 ## High level design decisions
 
 Focus on flexibility. Users should be able to create a tag successfully as long as they pass an interpretable value.
