@@ -2,8 +2,12 @@ from platform import system
 
 from .taggit import *
 
-
 OPERATING_SYSTEM = system()
+
+manager = OSManager()
+manager.register_builder('Darwin', MacOSTagManager())
+
+tag_manager = manager.create(OPERATING_SYSTEM)
 
 
 def _os_check():
