@@ -5,7 +5,7 @@ from .taggit import *
 OPERATING_SYSTEM = system()
 
 manager = OSManager()
-manager.register_builder('Darwin', MacOSTagManager())
+manager.register_manager('Darwin', MacOSTagManager())
 
 tag_manager = manager.create(OPERATING_SYSTEM)
 

@@ -165,7 +165,7 @@ class MacOSTagManager():
         #     return f'Tag("{self.name}", "{self.color}")'
 
         def __eq__(self, other):
-            if not isinstance(other, self.Tag):
+            if not isinstance(other, ParentTag):
                 # don't attempt to compare against unrelated types
                 return NotImplemented
 
@@ -367,13 +367,13 @@ class OSManager:
 
     Methods
     --------
-    register_managers(self, key, manager)
+    register_manager(self, key, manager)
     create(self, key, **kwargs)
     """
     def __init__(self):
         self._managers = {}
 
-    def register_managers(self, key, manager):
+    def register_manager(self, key, manager):
         """adds a key, value pair to the _managers dictionary.
 
         Parameters
