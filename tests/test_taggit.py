@@ -46,6 +46,7 @@ def test_remove_tag():
     tm.remove_tag(('tag', 'red'), test_file)
     assert tm.get_tags(test_file) == [tm.Tag("tag", "blue")]
 
+
 def test_str_representation_tag_object():
     # Tests for Mac OSx
     taggit._OPERATING_SYSTEM = 'Darwin'

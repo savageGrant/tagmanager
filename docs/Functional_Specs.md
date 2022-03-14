@@ -61,8 +61,8 @@ values (strings, lists, tuples). I do not want to enforce a single acceptable wa
 able to be added without explicit creation of a tag object. 
 
 Another import design consideration is allowing for future expansion to multiple OS environments. Nothing passed by 
-the user should be required to be OS specific and the values returned by the package should either be generalized or 
-there should be logic to allow for OS-specific values.
+the user should be required to be OS specific for functionality to work. This is achieved with a factory method pattern
+design.
 
 Cognitive load should be reduced whenever possible. Each method and function should clearly state its functionality 
 via naming convention. Docstrings are non-negotiable. Class docstrings should provide information about the attributes, 
