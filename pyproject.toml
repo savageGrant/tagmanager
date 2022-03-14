@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "taggit"
+name = "pytaggit"
 version = "1.0.0"
 description = "Applies tagging to organize files."
 authors = ["Grant Savage"]

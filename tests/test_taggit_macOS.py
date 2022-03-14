@@ -3,14 +3,14 @@ import unittest
 from unittest.mock import patch
 
 import pytest
-import taggit
-from taggit import tag_manager as tm
+import pytaggit
+from pytaggit import tag_manager as tm
 
-taggit.OPERATING_SYSTEM = 'Windows'
+pytaggit.OPERATING_SYSTEM = 'Windows'
 
 def test_raise_an_error_on_unsupported():
     with pytest.raises(RuntimeError):
-        taggit._os_check()
+        pytaggit._os_check()
 
 
 def test_create_tag_from_string():

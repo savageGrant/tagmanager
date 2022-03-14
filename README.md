@@ -4,7 +4,7 @@
 ## Installation
 
 ```zsh
-pip install taggit
+pip install pytaggit
 ```
 
 ## Current Package Limitations
@@ -34,29 +34,30 @@ taggit
 ## Tutorial
 
 Add tag to file:
-```python
-from taggit import tag_manager as tm
 
->>> file_location = "sample_folder/sample_file.txt"
+```python
+from pytaggit import tag_manager as tm
+
+>> > file_location = "sample_folder/sample_file.txt"
 
 # Add tag via Tag object
->>> tag = tm.Tag(name="green_tag", color="green")
+>> > tag = tm.Tag(name="green_tag", color="green")
 
->>> tm.add_tag(tag, file_location)
+>> > tm.add_tag(tag, file_location)
 
 # Add tag via string
->>> tm.add_tag("blue_tag\nblue", file_location)
+>> > tm.add_tag("blue_tag\nblue", file_location)
 
 # Add colorless tag via string
->>> tm.add_tag("no_color_tag", file_location)
+>> > tm.add_tag("no_color_tag", file_location)
 
 # Add tag via tuple
->>> tm.add_tag(("purple_tag",'purple'), file_location)
+>> > tm.add_tag(("purple_tag", 'purple'), file_location)
 
 # Add multiple tags via list of tuples
->>> red_list = [('first_red','red'), ('second_red','red')]
+>> > red_list = [('first_red', 'red'), ('second_red', 'red')]
 
->>> tm.add_tag(red_list, file_location)
+>> > tm.add_tag(red_list, file_location)
 ```
 
 Return tags by file:
