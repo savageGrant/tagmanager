@@ -17,7 +17,7 @@ taggit
 |   |   __init__.py
 |   |   taggit.py
 |───tests
-|   |   test_taggit.py
+|   |   test_taggit_macOS.py
 |───docs
 |   |   Functional_Specs.md
 |   |   Design_Specs.md
