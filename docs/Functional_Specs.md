@@ -13,7 +13,7 @@ taggit
 |   .gitignore
 |   poetry.lock
 |   pyproject.toml
-|───taggit
+|───pytaggit
 |   |   __init__.py
 |   |   taggit.py
 |───tests
