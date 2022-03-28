@@ -28,7 +28,7 @@ class ParentTag:
         color : Str representation of color.
         """
         self.name = name
-        self.color = self.color
+        self.color = color
 
     def __str__(self):
         return f"{self.name}"
@@ -37,7 +37,7 @@ class ParentTag:
         return f'Tag("{self.name}", "{self.color}")'
 
     def __eq__(self, other):
-        if not isinstance(other, self.Tag):
+        if not isinstance(other, ParentTag):
             # don't attempt to compare against unrelated types
             return NotImplemented
 
