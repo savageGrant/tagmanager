@@ -7,3 +7,6 @@
 /dataSources/
 /dataSources.local.xml
 /.idea/
+/.coverage
+/docs/final_report.docx
+tagmanager/__pycache__
