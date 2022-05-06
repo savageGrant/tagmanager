@@ -1,15 +1,15 @@
-# Taggit Component Specs
+# Tagmanager Component Specs
 
 # Purpose of this document:
-The purpose of the Component Design Specification is to describe the intended behavior and operation of the Taggit 
+The purpose of the Component Design Specification is to describe the intended behavior and operation of the Tagmanager 
 package's public classes and methods. This document does not contain technical details on how this behavior is achieved.
 
-## taggit.py Module
+## Tagmanager.py Module
 This is the only Python module in the project and contains the primary ParentTag class, the class MacOSTagManager class 
-and the OSManager class. The taggit module is imported with a “import taggit” command.
+and the OSManager class. The Tagmanager module is imported with a “import Tagmanager” command.
 
-## taggit class ParentTag:
-taggit.ParentTag is a class object that holds the name and color of a tag. The user creates
+## Tagmanager class ParentTag:
+Tagmanager.ParentTag is a class object that holds the name and color of a tag. The user creates
 a ParentTag object by passing two parameters. A name string and a color string. 
 ParentTags are also created using a pure string representation, and by passing a tuple containing
 string representations of the name and color (str,str).
@@ -21,7 +21,7 @@ The Tag object representation (__ repr__) is explicit and looks like Tag("Name",
 
 When checking for equality, two separate tag objects with the same name and color evaluate as equal.
 
-## taggit class OSManager
+## Tagmanager class OSManager
 OSManager sets up the available OS managers via the register_manager() method. 
 Once an OS manager is registered the OSManager can create an instance of that manager with the create method.
 This class is intended to be used to set the intended OS manager to provide the correct methods to edit tags in that OS.
@@ -32,8 +32,8 @@ Adds a key, value pair {key:manager} to the _managers dictionary.
 ### OSManager method create(key) 
 Looks up a registered tag manager and creates a class object of the manager if it exits.
 
-## taggit class MacOSTagManager
-Manages the implementations of Taggit for MacOS. This class contains all the macOS specific parameters as well as all
+## Tagmanager class MacOSTagManager
+Manages the implementations of Tagmanager for MacOS. This class contains all the macOS specific parameters as well as all
 the methods to interact with a masOS tag. The public methods are add_tag(), remove_tag(), remove_all_tags() and
 get_tags().
 

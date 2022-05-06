@@ -3,41 +3,41 @@ import unittest
 from unittest.mock import patch
 
 import pytest
-from pytaggit import taggit
-from pytaggit import tag_manager as tm
-import pytaggit
+from tagmanager import tagmanager
+from tagmanager import tag_manager as tm
+import tagmanager
 
-pytaggit.OPERATING_SYSTEM = 'Windows'
+tagmanager.OPERATING_SYSTEM = 'Windows'
 
 
 def test_raise_an_error_on_unsupported():
     with pytest.raises(RuntimeError):
-        pytaggit._os_check()
+        tagmanager._os_check()
 
 
 def test_parenttag_name_color():
-    tag = taggit.ParentTag("testtag", "red")
+    tag = tagmanager.ParentTag("testtag", "red")
     assert tag.color == "red"
     assert tag.name == "testtag"
 
 
 def test_parentag_str():
-    tag = taggit.ParentTag("testtag", "red")
+    tag = tagmanager.ParentTag("testtag", "red")
     assert str(tag) == "testtag"
 
 
 def test_parenttag_repr():
-    tag = taggit.ParentTag("testtag", "blue")
+    tag = tagmanager.ParentTag("testtag", "blue")
     assert repr(tag) == 'Tag("testtag", "blue")'
 
 
 def test_parenttag_equality():
-    tag = taggit.ParentTag("testtag", "blue")
-    second_tag = taggit.ParentTag("testtag", "blue")
+    tag = tagmanager.ParentTag("testtag", "blue")
+    second_tag = tagmanager.ParentTag("testtag", "blue")
     assert tag == second_tag
 
 def test_parrenttag_inequality():
-    tag = taggit.ParentTag("test", "red")
+    tag = tagmanager.ParentTag("test", "red")
     not_tag = {"name": "tester"}
     assert tag != not_tag
 

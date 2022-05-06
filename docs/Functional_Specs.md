@@ -1,4 +1,4 @@
-# Taggit Functional Design Specifications
+# tagmanager Functional Design Specifications
 
 ## Purpose of this document:
 Define the high-level design decisions of the project as well as the lower-level design style and standards that are followed and enforced.
@@ -7,17 +7,17 @@ Define the high-level design decisions of the project as well as the lower-level
 The package structure adheres to popular convention.
 
 ```
-taggit
+tagmanager
 |   README.md
 |   LICENSE
 |   .gitignore
 |   poetry.lock
 |   pyproject.toml
-|───pytaggit
+|───tagmanager
 |   |   __init__.py
-|   |   taggit.py
+|   |   tagmanager.py
 |───tests
-|   |   test_taggit_macOS.py
+|   |   test_tagmanager_macOS.py
 |───docs
 |   |   Functional_Specs.md
 |   |   Design_Specs.md
@@ -91,7 +91,7 @@ Other documentation files are stored in the /docs directory. This shouldn't be s
 Tests are stored in the tests directory and test code-coverage is maintained at 100%. 
 Pytest is used in tandem with Coverage via the pytest-cov plugin.
 ```zsh1
-pytest --cov=taggit tests/    
+pytest --cov=tagmanager tests/    
 ```
 ### Dependency Management and Packaging
 This project specifies build dependencies with pyproject.toml in accordance with PEP 518 

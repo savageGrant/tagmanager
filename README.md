@@ -1,10 +1,10 @@
-# Taggit
+# tagmanager
 ### A Python library for tagging files.
 #### Author: Grant Savage
 ## Installation
 
 ```zsh
-pip install pytaggit
+pip install tagmanager
 ```
 
 ## Current Package Limitations
@@ -13,17 +13,17 @@ There is currently no functionality for Linux or Windows.
 
 ## Package Structure
 ```
-taggit
+tagmanager
 |   README.md
 |   LICENSE
 |   .gitignore
 |   poetry.lock
 |   pyproject.toml
-|───pytaggit
+|───tagmanager
 |   |   __init__.py
-|   |   taggit.py
+|   |   tagmanager.py
 |───tests
-|   |   test_taggit_macOS.py
+|   |   test_tagmanager_macOS.py
 |───docs
 |   |   Functional_Specs.md
 |   |   Design_Specs.md
@@ -36,7 +36,7 @@ taggit
 Add tag to file:
 
 ```python
-from pytaggit import tag_manager as tm
+from tagmanager import tag_manager as tm
 
 >> > file_location = "sample_folder/sample_file.txt"
 
